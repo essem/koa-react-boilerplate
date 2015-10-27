@@ -7,5 +7,8 @@
     "start": "node --use_strict index.js"
   },
   "author": "essem",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^5.8.29"
+  }
 }
