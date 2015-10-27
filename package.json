@@ -4,7 +4,7 @@
   "description": "Template project for web application.",
   "main": "index.js",
   "scripts": {
-    "start": "node --use_strict index.js"
+    "start": "nodemon --use_strict index.js"
   },
   "author": "essem",
   "license": "ISC",
@@ -12,5 +12,8 @@
     "babel": "^5.8.29",
     "koa": "^1.1.1",
     "koa-ejs": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.0"
   }
 }
