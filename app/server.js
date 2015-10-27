@@ -1,4 +1,6 @@
 import koa from 'koa';
+import ejs from 'koa-ejs';
+import path from 'path';
 
 let port = 5000;
 
@@ -11,8 +13,15 @@ app.use(function*(next){
   console.log('%s %s - %s ms', this.method, this.url, ms);
 });
 
+ejs(app, {
+  root: path.join(__dirname, 'view'),
+  layout: false,
+  viewExt: 'ejs',
+  cache: false,
+});
+
 app.use(function*() {
-  this.body = 'hello world';
+  yield this.render('index.html');
 });
 
 app.listen(port);
