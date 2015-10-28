@@ -1,4 +1,5 @@
 import koa from 'koa';
+import koaStatic from 'koa-static';
 import ejs from 'koa-ejs';
 import path from 'path';
 
@@ -12,6 +13,8 @@ app.use(function*(next){
   let ms = new Date - start;
   console.log('%s %s - %s ms', this.method, this.url, ms);
 });
+
+app.use(koaStatic('public'));
 
 ejs(app, {
   root: path.join(__dirname, 'view'),

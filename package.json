@@ -4,16 +4,21 @@
   "description": "Template project for web application.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --use_strict index.js"
+    "start": "nodemon -w app/server --use_strict index.js",
+    "build": "webpack"
   },
   "author": "essem",
   "license": "ISC",
   "dependencies": {
     "babel": "^5.8.29",
     "koa": "^1.1.1",
-    "koa-ejs": "^2.0.1"
+    "koa-ejs": "^2.0.1",
+    "koa-static": "^1.5.1"
   },
   "devDependencies": {
-    "nodemon": "^1.8.0"
+    "babel-core": "^5.8.29",
+    "babel-loader": "^5.3.2",
+    "nodemon": "^1.8.0",
+    "webpack": "^1.12.2"
   }
 }
