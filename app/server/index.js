@@ -24,8 +24,12 @@ ejs(app, {
 });
 
 app.use(function*() {
-  yield this.render('index.html');
+  let bundlePath = 'bundle.js';
+  if (process.env.NODE_ENV != 'production') {
+    bundlePath = 'http://localhost:5001/assets/bundle.js';
+  }
+  yield this.render('index.html', { bundlePath: bundlePath });
 });
 
 app.listen(port);
-console.log(`server is started on ${port}`);
+console.log(`server is started on ${port} in ${process.env.NODE_ENV} mode`);

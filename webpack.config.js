@@ -4,7 +4,8 @@ module.exports = {
     entry: "./app/client/index.js",
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        publicPath: "http://localhost:5001/assets/"
     },
     module: {
         loaders: [
