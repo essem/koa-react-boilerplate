@@ -6,6 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node index.js",
     "build": "webpack",
+    "eslint": "eslint .",
     "dev-back": "NODE_ENV=development nodemon -w app/server --use_strict index.js",
     "dev-front": "webpack-dev-server --devtool eval --progress --colors --host 0.0.0.0 --port 5001 --content-base http://localhost:5000"
   },
@@ -25,6 +26,8 @@
   "devDependencies": {
     "babel-core": "^5.8.29",
     "babel-loader": "^5.3.2",
+    "eslint": "^1.8.0",
+    "eslint-plugin-react": "^3.6.3",
     "nodemon": "^1.8.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"

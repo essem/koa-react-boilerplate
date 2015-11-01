@@ -20,7 +20,7 @@ ejs(app, {
   root: path.join(__dirname, 'view'),
   layout: false,
   viewExt: 'ejs',
-  cache: false,
+  cache: false
 });
 
 app.use(function*() {

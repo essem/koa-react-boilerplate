@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, Link } from 'react-router'
-import Button from 'react-bootstrap/lib/Button';
+import { Router, Route, IndexRoute, Link } from 'react-router';
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +15,7 @@ class App extends React.Component {
         </ul>
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
@@ -25,7 +24,7 @@ class Dashboard extends React.Component {
     super();
   }
   render() {
-    return <div>hello world</div>
+    return <div>hello world</div>;
   }
 }
 
@@ -34,7 +33,7 @@ class About extends React.Component {
     super();
   }
   render() {
-    return <div>about</div>
+    return <div>about</div>;
   }
 }
 
