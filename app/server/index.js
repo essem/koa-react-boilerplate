@@ -24,11 +24,18 @@ ejs(app, {
 });
 
 app.use(function*() {
-  let bundlePath = 'bundle.js';
-  if (process.env.NODE_ENV != 'production') {
-    bundlePath = 'http://localhost:5001/assets/bundle.js';
+  if (this.url == '/api/locations') {
+    this.body = JSON.stringify([
+      { id: 0, name: 'hello' },
+      { id: 1, name: 'world' }
+    ]);
+  } else {
+    let bundlePath = 'bundle.js';
+    if (process.env.NODE_ENV != 'production') {
+      bundlePath = 'http://localhost:5001/assets/bundle.js';
+    }
+    yield this.render('index.html', { bundlePath: bundlePath });
   }
-  yield this.render('index.html', { bundlePath: bundlePath });
 });
 
 app.listen(port);

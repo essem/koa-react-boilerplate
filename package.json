@@ -13,6 +13,7 @@
   "author": "essem",
   "license": "ISC",
   "dependencies": {
+    "alt": "^0.17.8",
     "babel": "^5.8.29",
     "history": "^1.13.0",
     "koa": "^1.1.1",

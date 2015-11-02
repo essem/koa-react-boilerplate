@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Link } from 'react-router';
+import Locations from './components/Locations.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -24,7 +25,7 @@ class Dashboard extends React.Component {
     super();
   }
   render() {
-    return <div>hello world</div>;
+    return <Locations />;
   }
 }
 
