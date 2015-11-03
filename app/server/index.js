@@ -1,5 +1,6 @@
 import koa from 'koa';
 import koaStatic from 'koa-static';
+import route from 'koa-route';
 import ejs from 'koa-ejs';
 import path from 'path';
 
@@ -23,20 +24,20 @@ ejs(app, {
   cache: false
 });
 
-app.use(function*() {
-  if (this.url == '/api/locations') {
-    this.body = JSON.stringify([
-      { id: 0, name: 'hello' },
-      { id: 1, name: 'world' }
-    ]);
-  } else {
-    let bundlePath = 'bundle.js';
-    if (process.env.NODE_ENV != 'production') {
-      bundlePath = 'http://localhost:5001/assets/bundle.js';
-    }
-    yield this.render('index.html', { bundlePath: bundlePath });
+app.use(route.get('/api/locations', function*() {
+  this.body = JSON.stringify([
+    { id: 0, name: 'hello' },
+    { id: 1, name: 'world' }
+  ]);
+}));
+
+app.use(route.get('/', function*() {
+  let bundlePath = 'bundle.js';
+  if (process.env.NODE_ENV != 'production') {
+    bundlePath = 'http://localhost:5001/assets/bundle.js';
   }
-});
+  yield this.render('index.html', { bundlePath: bundlePath });
+}));
 
 app.listen(port);
 console.log(`server is started on ${port} in ${process.env.NODE_ENV} mode`);
