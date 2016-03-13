@@ -2,14 +2,14 @@ import React from 'react';
 import LocationStore from '../stores/LocationStore';
 import LocationActions from '../actions/LocationActions';
 
-var Locations = React.createClass({
+const Locations = React.createClass({
   getInitialState() {
     return LocationStore.getState();
   },
 
   componentDidMount() {
     LocationStore.listen(this.onChange);
-    LocationActions.fetchLocations();
+    // LocationActions.fetchLocations();
   },
 
   componentWillUnmount() {
@@ -32,19 +32,15 @@ var Locations = React.createClass({
         <div>
           loading...
         </div>
-      )
+      );
     }
 
     return (
       <ul>
-        {this.state.locations.map((location) => {
-          return (
-            <li>{location.name}</li>
-          );
-        })}
+        {this.state.locations.map((location) => <li>{location.name}</li>)}
       </ul>
     );
-  }
+  },
 });
 
 module.exports = Locations;

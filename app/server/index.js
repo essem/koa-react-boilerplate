@@ -1,17 +1,17 @@
-import koa from 'koa';
-import koaStatic from 'koa-static';
-import route from 'koa-route';
-import ejs from 'koa-ejs';
-import path from 'path';
+const koa = require('koa');
+const koaStatic = require('koa-static');
+const route = require('koa-route');
+const ejs = require('koa-ejs');
+const path = require('path');
 
-let port = 5000;
+const port = 5000;
 
-let app = koa();
+const app = koa();
 
-app.use(function*(next){
-  let start = new Date;
+app.use(function* timer(next) {
+  const start = new Date;
   yield next;
-  let ms = new Date - start;
+  const ms = new Date - start;
   console.log('%s %s - %s ms', this.method, this.url, ms);
 });
 
@@ -21,22 +21,23 @@ ejs(app, {
   root: path.join(__dirname, 'view'),
   layout: false,
   viewExt: 'ejs',
-  cache: false
+  cache: false,
 });
 
-app.use(route.get('/api/locations', function*() {
+app.use(route.get('/api/locations', function* locationHandler() {
   this.body = JSON.stringify([
     { id: 0, name: 'hello' },
-    { id: 1, name: 'world' }
+    { id: 1, name: 'world' },
   ]);
 }));
 
-app.use(route.get('/', function*() {
+app.use(route.get('/', function* rootHandler() {
   let bundlePath = 'bundle.js';
-  if (process.env.NODE_ENV != 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     bundlePath = 'http://localhost:5001/assets/bundle.js';
   }
-  yield this.render('index.html', { bundlePath: bundlePath });
+
+  yield this.render('index.html', { bundlePath });
 }));
 
 app.listen(port);
