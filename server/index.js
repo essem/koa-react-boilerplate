@@ -1,9 +1,12 @@
+'use strict';
+
 const koa = require('koa');
 const koaStatic = require('koa-static');
 const route = require('koa-route');
 const ejs = require('koa-ejs');
 const path = require('path');
 
+const development = process.env.NODE_ENV !== 'production';
 const port = 5000;
 
 const app = koa();
@@ -41,4 +44,4 @@ app.use(route.get('/', function* rootHandler() {
 }));
 
 app.listen(port);
-console.log(`server is started on ${port} in ${process.env.NODE_ENV} mode`);
+console.log(`server is started on ${port} in ${development ? 'development' : 'production'} mode`);

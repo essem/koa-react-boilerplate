@@ -8,8 +8,8 @@
     "build": "webpack",
     "eslint": "eslint .",
     "jscs": "jscs .",
-    "dev-back": "NODE_ENV=development nodemon -w app/server --use_strict app/server/index.js",
-    "dev-front": "webpack-dev-server --devtool eval --hot --progress --colors --host 0.0.0.0 --port 5001 --content-base http://localhost:5000"
+    "dev-back": "nodemon -w server server/index.js",
+    "dev-front": "webpack-dev-server"
   },
   "author": "essem",
   "license": "ISC",
@@ -35,6 +35,7 @@
     "eslint": "=2.2.x",
     "eslint-config-airbnb": "^6.1.0",
     "eslint-plugin-react": "^4.2.1",
+    "html-webpack-plugin": "^2.10.0",
     "jscs": "^2.11.0",
     "nodemon": "^1.9.1",
     "webpack": "^1.12.14",

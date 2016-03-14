@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
-import Locations from './components/Locations.jsx';
+import Locations from './components/Locations';
 
 const App = props => (
   <div>
@@ -12,10 +12,16 @@ const App = props => (
     {props.children}
   </div>
 );
+App.propTypes = {
+  children: React.PropTypes.element,
+};
 
 const Dashboard = () => <Locations />;
 
 const About = () => <div>about</div>;
+
+const app = document.createElement('div');
+document.body.appendChild(app);
 
 ReactDOM.render((
   <Router history={hashHistory}>
@@ -24,4 +30,4 @@ ReactDOM.render((
       <Route path="about" component={About} />
     </Route>
   </Router>
-), document.getElementById('app'));
+), app);

@@ -1,15 +1,30 @@
+const webpack = require('webpack');
 const path = require('path');
+const HtmlwebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './app/client/index.js',
+  devtool: 'source-map',
+  entry: './app/index.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: 'http://localhost:5001/assets/',
+  },
+  devServer: {
+    hot: true,
+    inline: true,
+    progress: true,
+    host: '0.0.0.0',
+    port: 5001,
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
+      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
     ],
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlwebpackPlugin({
+      title: 'webapp',
+    }),
+  ],
 };
