@@ -1,24 +1,21 @@
 import React from 'react';
-import LocationStore from '../stores/LocationStore';
-import LocationActions from '../actions/LocationActions';
 
-const Locations = React.createClass({
-  getInitialState() {
-    return LocationStore.getState();
-  },
+export default class Locations extends React.Component {
+  state = {
+    errorMessage: null,
+    locations: [],
+  };
 
   componentDidMount() {
-    LocationStore.listen(this.onChange);
-    // LocationActions.fetchLocations();
-  },
-
-  componentWillUnmount() {
-    LocationStore.unlisten(this.onChange);
-  },
-
-  onChange(state) {
-    this.setState(state);
-  },
+    fetch('http://localhost:5000/api/locations')
+    .then(res => res.json())
+    .then(j => {
+      this.setState({ locations: j });
+    })
+    .catch(err => {
+      this.setState({ errorMessage: err.toString() });
+    });
+  }
 
   render() {
     if (this.state.errorMessage) {
@@ -37,10 +34,10 @@ const Locations = React.createClass({
 
     return (
       <ul>
-        {this.state.locations.map((location) => <li>{location.name}</li>)}
+        {this.state.locations.map((location) => (
+          <li key={location.id}>{location.name}</li>
+        ))}
       </ul>
     );
-  },
-});
-
-module.exports = Locations;
+  }
+}

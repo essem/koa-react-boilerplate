@@ -3,6 +3,7 @@
 const koa = require('koa');
 const koaStatic = require('koa-static');
 const route = require('koa-route');
+const cors = require('koa-cors');
 const ejs = require('koa-ejs');
 const path = require('path');
 
@@ -18,7 +19,8 @@ app.use(function* timer(next) {
   console.log('%s %s - %s ms', this.method, this.url, ms);
 });
 
-app.use(koaStatic('public'));
+app.use(koaStatic('dist')); // production only
+app.use(cors()); // dev only
 
 ejs(app, {
   root: path.join(__dirname, 'view'),
