@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid, Panel } from 'react-bootstrap';
 
 export default class Locations extends React.Component {
   state = {
@@ -18,26 +19,22 @@ export default class Locations extends React.Component {
   }
 
   render() {
+    let pContent = '';
     if (this.state.errorMessage) {
-      return (
-        <div>Something is wrong</div>
-      );
-    }
-
-    if (!this.state.locations.length) {
-      return (
-        <div>
-          loading...
-        </div>
-      );
+      pContent = <div>Something is wrong</div>;
+    } else if (!this.state.locations.length) {
+      pContent = <div>Loading...</div>;
+    } else {
+      pContent = this.state.locations.map((location) => (
+        <Panel key={location.id}>{location.name}</Panel>
+      ));
     }
 
     return (
-      <ul>
-        {this.state.locations.map((location) => (
-          <li key={location.id}>{location.name}</li>
-        ))}
-      </ul>
+      <Grid>
+        <h1>Locations</h1>
+        {pContent}
+      </Grid>
     );
   }
 }

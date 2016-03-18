@@ -1,32 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
-import Locations from './components/Locations';
-
-const App = props => (
-  <div>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/about">About</Link></li>
-    </ul>
-    {props.children}
-  </div>
-);
-App.propTypes = {
-  children: React.PropTypes.element,
-};
-
-const Dashboard = () => <Locations />;
-
-const About = () => <div>about</div>;
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import Topbar from './components/topbar';
+import Home from './components/home';
+import Locations from './components/locations';
+import About from './components/about';
 
 const app = document.createElement('div');
 document.body.appendChild(app);
 
 ReactDOM.render((
   <Router history={hashHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Dashboard} />
+    <Route path="/" component={Topbar}>
+      <IndexRoute component={Home} />
+      <Route path="locations" component={Locations} />
       <Route path="about" component={About} />
     </Route>
   </Router>
