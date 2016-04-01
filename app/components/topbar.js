@@ -17,7 +17,7 @@ export default class Home extends React.Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <li><Link to="/locations">Locations</Link></li>
+            <li><Link to="/todos">Todos</Link></li>
             <li><Link to="/about">About</Link></li>
           </Nav>
         </Navbar>

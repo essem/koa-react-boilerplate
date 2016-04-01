@@ -7,5 +7,8 @@
     "strict": 0,
     "no-console": 0,
     "react/prefer-stateless-function": 0, // does not support hmr
+  },
+  "globals": {
+    "API_HOST": false,
   }
 }

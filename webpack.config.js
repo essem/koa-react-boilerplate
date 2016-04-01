@@ -1,6 +1,18 @@
+'use strict';
+
 const webpack = require('webpack');
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
+
+const apiHost = (process.env.NODE_ENV === 'production') ? '' : 'http://localhost:5000';
+
+const plugins = [
+  new webpack.DefinePlugin({ API_HOST: JSON.stringify(apiHost) }),
+  new webpack.HotModuleReplacementPlugin(),
+  new HtmlwebpackPlugin({
+    title: 'webapp',
+  }),
+];
 
 module.exports = {
   devtool: 'source-map',
@@ -40,10 +52,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlwebpackPlugin({
-      title: 'webapp',
-    }),
-  ],
+  plugins,
 };

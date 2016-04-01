@@ -15,15 +15,17 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.6",
+    "co-body": "^4.0.0",
     "koa": "^1.2.0",
     "koa-cors": "0.0.16",
-    "koa-ejs": "^3.0.0",
     "koa-route": "^2.4.2",
     "koa-static": "^2.0.0",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.7",
-    "react-router": "^2.0.1"
+    "react-redux": "^4.4.1",
+    "react-router": "^2.0.1",
+    "redux": "^3.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
@@ -41,6 +43,7 @@
     "html-webpack-plugin": "^2.10.0",
     "jscs": "^2.11.0",
     "nodemon": "^1.9.1",
+    "redux-devtools": "^3.1.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
