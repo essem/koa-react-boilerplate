@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import todoApp from './reducers';
@@ -19,7 +19,7 @@ const store = createStore(todoApp, undefined,
 
 ReactDOM.render((
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
       <Route path="/" component={Topbar}>
         <IndexRoute component={Home} />
         <Route path="todos" component={Todos} />

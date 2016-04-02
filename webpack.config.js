@@ -25,6 +25,7 @@ module.exports = {
     hot: true,
     inline: true,
     progress: true,
+    historyApiFallback: true,
     host: '0.0.0.0',
     port: 5001,
   },
