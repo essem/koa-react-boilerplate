@@ -11,6 +11,7 @@ const plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new HtmlwebpackPlugin({
     title: 'webapp',
+    favicon: './app/public/favicon.ico',
   }),
 ];
 

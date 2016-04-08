@@ -1,7 +1,6 @@
 'use strict';
 
 const koa = require('koa');
-const koaStatic = require('koa-static');
 const route = require('koa-route');
 const cors = require('koa-cors');
 const parse = require('co-body');
@@ -64,7 +63,7 @@ function createServer(port) {
   }));
 
   if (env.production) {
-    app.use(koaStatic('dist'));
+    app.use(require('koa-static')('dist'));
   }
 
   const httpServer = app.listen(port);
