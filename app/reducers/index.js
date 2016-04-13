@@ -41,23 +41,4 @@ const todos = (state = [], action) => {
   }
 };
 
-const initialState = {
-  todos: [],
-};
-
-const todoApp = (state = initialState, action) => {
-  switch (action.type) {
-    case 'INIT_TODOS':
-    case 'ADD_TODO':
-    case 'TOGGLE_TODO':
-      return {
-        ...state,
-        todos: todos(state.todos, action),
-      };
-
-    default:
-      return state;
-  }
-};
-
-export default todoApp;
+export default todos;
