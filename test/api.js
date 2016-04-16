@@ -1,17 +1,20 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import 'isomorphic-fetch';
+import config from 'config';
 import createServer from '../server/server';
 
 chai.should();
 chai.use(chaiAsPromised);
 
 describe('Api', function () {
-  const API_HOST = 'http://localhost:6000';
+  const hostname = config.get('hostname');
+  const port = config.get('port');
+  const API_HOST = `http://${hostname}:${port}`;
   let server;
 
   before(() => {
-    server = createServer(6000);
+    server = createServer(hostname, port);
   });
 
   after(() => {

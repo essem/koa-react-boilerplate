@@ -8,7 +8,7 @@
     "build": "webpack",
     "eslint": "eslint .",
     "jscs": "jscs .",
-    "dev-back": "nodemon -w server server/index.js",
+    "dev-back": "nodemon -w server -w config server/index.js",
     "dev-front": "webpack-dev-server",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require babel-polyfill",
     "test-cover": "NODE_ENV=test babel-node ./node_modules/istanbul/lib/cli cover _mocha",
@@ -19,6 +19,7 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "co-body": "^4.0.0",
+    "config": "^1.20.1",
     "isomorphic-fetch": "^2.2.1",
     "koa": "^1.2.0",
     "koa-cors": "0.0.16",

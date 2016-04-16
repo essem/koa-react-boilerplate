@@ -6,13 +6,11 @@ chai.should();
 
 describe('Reducer', function () {
   it('should handle initial state', function () {
-    todoApp(undefined, {}).should.deep.equal({ todos: [] });
+    todoApp(undefined, {}).should.deep.equal([]);
   });
 
   it('should handle INIT_TODOS', function () {
-    const stateBefore = {
-      todos: [],
-    };
+    const stateBefore = [];
 
     const action = {
       type: 'INIT_TODOS',
@@ -25,15 +23,13 @@ describe('Reducer', function () {
       ],
     };
 
-    const stateAfter = {
-      todos: [
-        {
-          id: 0,
-          text: 'Learn Redux',
-          completed: false,
-        },
-      ],
-    };
+    const stateAfter = [
+      {
+        id: 0,
+        text: 'Learn Redux',
+        completed: false,
+      },
+    ];
 
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -42,9 +38,7 @@ describe('Reducer', function () {
   });
 
   it('should handle ADD_TODO', function () {
-    const stateBefore = {
-      todos: [],
-    };
+    const stateBefore = [];
 
     const action = {
       type: 'ADD_TODO',
@@ -53,15 +47,13 @@ describe('Reducer', function () {
       completed: false,
     };
 
-    const stateAfter = {
-      todos: [
-        {
-          id: 0,
-          text: 'Learn Redux',
-          completed: false,
-        },
-      ],
-    };
+    const stateAfter = [
+      {
+        id: 0,
+        text: 'Learn Redux',
+        completed: false,
+      },
+    ];
 
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -70,30 +62,26 @@ describe('Reducer', function () {
   });
 
   it('should handle TOGGLE_TODO', function () {
-    const stateBefore = {
-      todos: [
-        {
-          id: 0,
-          text: 'Learn Redux',
-          completed: false,
-        },
-      ],
-    };
+    const stateBefore = [
+      {
+        id: 0,
+        text: 'Learn Redux',
+        completed: false,
+      },
+    ];
 
     const action = {
       type: 'TOGGLE_TODO',
       id: 0,
     };
 
-    const stateAfter = {
-      todos: [
-        {
-          id: 0,
-          text: 'Learn Redux',
-          completed: true,
-        },
-      ],
-    };
+    const stateAfter = [
+      {
+        id: 0,
+        text: 'Learn Redux',
+        completed: true,
+      },
+    ];
 
     deepFreeze(stateBefore);
     deepFreeze(action);

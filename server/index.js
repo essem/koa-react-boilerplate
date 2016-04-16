@@ -1,5 +1,8 @@
 'use strict';
 
+const config = require('config');
 const createServer = require('./server');
 
-createServer(5000);
+const hostname = config.get('hostname');
+const port = config.get('port');
+createServer(hostname, port);
