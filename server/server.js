@@ -4,6 +4,8 @@ const koa = require('koa');
 const route = require('koa-route');
 const cors = require('koa-cors');
 const parse = require('co-body');
+const morgan = require('koa-morgan');
+const logger = require('./logger');
 
 function createServer(port) {
   const env = {
@@ -18,12 +20,12 @@ function createServer(port) {
   const app = koa();
 
   if (!env.test) {
-    app.use(function* timer(next) {
-      const start = new Date;
-      yield next;
-      const ms = new Date - start;
-      console.log('%s %s - %s ms', this.method, this.url, ms);
-    });
+    const stream = {
+      write(message) {
+        logger.info(message.slice(0, -1));
+      },
+    };
+    app.use(morgan.middleware('combined', { stream }));
   }
 
   if (env.development) {
@@ -70,7 +72,7 @@ function createServer(port) {
 
   if (!env.test) {
     const envStr = env.development ? 'development' : 'production';
-    console.log(`server is started on ${port} in ${envStr} mode`);
+    logger.info(`server is started on ${port} in ${envStr} mode`);
   }
 
   return httpServer;

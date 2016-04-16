@@ -18,9 +18,7 @@ class Todos extends React.Component {
         todos: j,
       });
     })
-    .catch(err => {
-      console.error(err);
-    });
+    .catch(() => {});
   }
 
   handleAdd = e => {
@@ -45,9 +43,7 @@ class Todos extends React.Component {
         completed: j.completed,
       });
     })
-    .catch(err => {
-      console.error(err);
-    });
+    .catch(() => {});
 
     input.value = '';
   };
@@ -62,9 +58,7 @@ class Todos extends React.Component {
         id,
       });
     })
-    .catch(err => {
-      console.error(err);
-    });
+    .catch(() => {});
   };
 
   render() {
