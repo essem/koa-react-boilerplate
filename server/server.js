@@ -2,6 +2,7 @@
 
 const koa = require('koa');
 const cors = require('koa-cors');
+const send = require('koa-send');
 const morgan = require('koa-morgan');
 const config = require('config');
 const logger = require('./logger');
@@ -26,6 +27,10 @@ function createServer(hostname, port) {
   if (config.get('serveStatic')) {
     app.use(require('koa-static')('dist')); // eslint-disable-line global-require
   }
+
+  app.use(function* index() {
+    yield send(this, 'dist/index.html');
+  });
 
   const httpServer = app.listen(port, hostname);
 
