@@ -27,6 +27,7 @@ module.exports = {
     new HtmlwebpackPlugin({
       title: 'node explorer',
       favicon: './app/public/favicon.ico',
+      template: './app/public/index.ejs',
     }),
   ],
   module: {

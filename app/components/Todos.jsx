@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, FormControl, Button, Panel } from 'react-bootstrap';
+import { Grid, Form, FormGroup, FormControl, Button, Panel } from 'react-bootstrap';
 import Todo from './Todo.jsx';
 
 class Todos extends React.Component {
@@ -72,15 +72,14 @@ class Todos extends React.Component {
 
     return (
       <Grid>
-        <form
-          className="form-inline"
-          onSubmit={this.handleAdd}
-        >
-          <FormControl
-            type="text"
-            value={this.state.addTodoText}
-            onChange={this.handleChangeAddTodoText}
-          />
+        <Form inline onSubmit={this.handleAdd}>
+          <FormGroup>
+            <FormControl
+              type="text"
+              value={this.state.addTodoText}
+              onChange={this.handleChangeAddTodoText}
+            />
+          </FormGroup>
           {' '}
           <Button
             type="submit"
@@ -88,7 +87,7 @@ class Todos extends React.Component {
           >
             Add
           </Button>
-        </form>
+        </Form>
         <br />
         <Panel>
         {todos.map(todo => <Todo key={todo.id} {...todo} onClick={this.handleToggleTodo} />)}

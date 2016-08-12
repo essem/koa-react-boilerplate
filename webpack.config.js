@@ -30,6 +30,7 @@ module.exports = {
     new HtmlwebpackPlugin({
       title: 'koa-react-boilerplate',
       favicon: './app/public/favicon.ico',
+      template: './app/public/index.ejs',
     }),
   ],
   module: {

@@ -15,11 +15,14 @@ export default class Home extends React.Component {
             <Navbar.Brand>
               <Link to="/">WebApp</Link>
             </Navbar.Brand>
+            <Navbar.Toggle />
           </Navbar.Header>
-          <Nav>
-            <li><Link to="/todos">Todos</Link></li>
-            <li><Link to="/about">About</Link></li>
-          </Nav>
+          <Navbar.Collapse>
+            <Nav>
+              <li><Link to="/todos">Todos</Link></li>
+              <li><Link to="/about">About</Link></li>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
         {this.props.children}
       </div>
