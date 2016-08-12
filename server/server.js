@@ -24,7 +24,7 @@ function createServer(hostname, port) {
   todos(app);
 
   if (config.get('serveStatic')) {
-    app.use(require('koa-static')('dist'));
+    app.use(require('koa-static')('dist')); // eslint-disable-line global-require
   }
 
   const httpServer = app.listen(port, hostname);

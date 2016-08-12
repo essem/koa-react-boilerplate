@@ -6,10 +6,10 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import todosReducer from './reducers';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import Topbar from './components/topbar';
-import Home from './components/home';
-import Todos from './components/todos';
-import About from './components/about';
+import Topbar from './components/Topbar.jsx';
+import Home from './components/Home.jsx';
+import Todos from './components/Todos.jsx';
+import About from './components/About.jsx';
 
 const app = document.createElement('div');
 document.body.appendChild(app);

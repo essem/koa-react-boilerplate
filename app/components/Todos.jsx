@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Input, Button, Panel } from 'react-bootstrap';
-import Todo from './todo';
+import { Grid, FormControl, Button, Panel } from 'react-bootstrap';
+import Todo from './Todo.jsx';
 
 class Todos extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     todos: React.PropTypes.array,
+  };
+
+  state = {
+    addTodoText: '',
   };
 
   componentDidMount() {
@@ -21,18 +25,20 @@ class Todos extends React.Component {
     .catch(() => {});
   }
 
+  handleChangeAddTodoText = e => {
+    this.setState({ addTodoText: e.target.value });
+  };
+
   handleAdd = e => {
     e.preventDefault();
 
-    const input = this.refs.addTodoText.getInputDOMNode();
-
-    if (!input.value.trim()) {
+    if (!this.state.addTodoText.trim()) {
       return;
     }
 
     fetch(`${API_HOST}/api/todos`, {
       method: 'post',
-      body: JSON.stringify({ text: input.value }),
+      body: JSON.stringify({ text: this.state.addTodoText }),
     })
     .then(res => res.json())
     .then(j => {
@@ -45,7 +51,7 @@ class Todos extends React.Component {
     })
     .catch(() => {});
 
-    input.value = '';
+    this.setState({ addTodoText: '' });
   };
 
   handleToggleTodo = id => {
@@ -70,9 +76,10 @@ class Todos extends React.Component {
           className="form-inline"
           onSubmit={this.handleAdd}
         >
-          <Input
+          <FormControl
             type="text"
-            ref="addTodoText"
+            value={this.state.addTodoText}
+            onChange={this.handleChangeAddTodoText}
           />
           {' '}
           <Button
@@ -81,11 +88,11 @@ class Todos extends React.Component {
           >
             Add
           </Button>
-       </form>
-       <br />
-       <Panel>
-      {todos.map(todo => <Todo key={todo.id} {...todo} onClick={this.handleToggleTodo} />)}
-      </Panel>
+        </form>
+        <br />
+        <Panel>
+        {todos.map(todo => <Todo key={todo.id} {...todo} onClick={this.handleToggleTodo} />)}
+        </Panel>
       </Grid>
     );
   }

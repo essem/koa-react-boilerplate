@@ -3,9 +3,14 @@
   "extends": [
     "airbnb",
   ],
+  "env": {
+    "browser": true,
+  },
   "rules": {
-    "strict": 0,
-    "react/prefer-stateless-function": 0, // does not support hmr
+    "strict": "off",
+    "react/prefer-stateless-function": "off", // does not support hmr
+    "import/no-extraneous-dependencies": "off",
+    "require-yield": "off",
   },
   "globals": {
     "API_HOST": false,
